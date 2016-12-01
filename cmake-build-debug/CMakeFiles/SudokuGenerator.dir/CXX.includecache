@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/Driver.cpp
+SudokuBoard.h
+/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/SudokuBoard.h
+iostream
+-
+
+/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/Square.cpp
+
+/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/Square.h
+
+/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/SudokuBoard.cpp
+iostream
+-
+sstream
+-
+SudokuBoard.h
+/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/SudokuBoard.h
+Square.cpp
+/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/Square.cpp
+
+/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/SudokuBoard.h
+array
+-
+cstring
+-
+Square.h
+/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/Square.h
+
