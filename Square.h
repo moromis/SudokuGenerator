@@ -9,9 +9,19 @@ class Square{
 
 public:
 
+    Square(int _x, int _y);
+
     void checkSquare(bool*& h);
 
+    int getX();
+    int getY();
+
+    void insertNumber(int i);
+
 private:
+
+    int x;
+    int y;
 
     static const int SQUARE_SIZE = 3;
 

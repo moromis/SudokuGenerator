@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <sstream>
+#include <math>
+
 #include "Board.h"
 #include "Square.cpp"
 
@@ -20,7 +22,8 @@ Board::Board() {
 
     for (int i = 0; i < SQUARE_SIZE; ++i) {
         for (int j = 0; j < SQUARE_SIZE; ++j) {
-            fullBoard[i][j] = -1;
+            Square square(i, j);
+            squareBoard[i][j] = square;
         }
     }
 
@@ -41,24 +44,43 @@ bool Board::createSquare(Square& square, int x, int y) {
 
     bool* hash = new bool[9];
 
+    //i = x, j = y
     for (int i = 0; i < SQUARE_SIZE; ++i) {
         for (int j = 0; j < SQUARE_SIZE; ++j) {
+
             //check square
             square.checkSquare(hash);
             //check column
+            checkColumn(square.getX() * SQUARE_SIZE + i, hash);
             //check row
+            checkRow(square.getY() * SQUARE_SIZE + i, hash);
+
+            //now based on hash decide randomly what number should go in this spot
+            do{
+                int random = (rand() % 9);
+                if(!hash[random]) { //if it's valid to insert
+                    fullBoard[i][j] = random;
+                }
+            }while(fullBoard[i][j] == -1);
+
+            square.insertNumber(fullBoard[i][j]);
+
         }
     }
 
     delete[] hash;
 }
 
-bool* Board::checkColumn(int row) {
-
+void Board::checkColumn(int column, bool*& hash) {
+    for (int i = 0; i < SIDE_SIZE; ++i) {
+        hash[fullBoard[column][i]] = true;
+    }
 }
 
-bool* Board::checkRow(int row) {
-    return false;
+void Board::checkRow(int row, bool*& hash) {
+    for (int i = 0; i < SIDE_SIZE; ++i) {
+        hash[fullBoard[i][row]] = true;
+    }
 }
 
 /*

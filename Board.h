@@ -31,8 +31,8 @@ private:
     int fullBoard [SIDE_SIZE] [SIDE_SIZE]; //9x9 array of ints
     Square squareBoard [SQUARE_SIZE] [SQUARE_SIZE]; //3x3 array of squares
 
-    bool* checkRow(int row);
-    bool* checkColumn(int row);
+    void checkRow(int row, bool*& hash);
+    void checkColumn(int row, bool*& hash);
 
     bool createSquare(Square& square, int x, int y);
 
