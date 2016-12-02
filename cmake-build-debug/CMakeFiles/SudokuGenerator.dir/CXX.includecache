@@ -11,6 +11,10 @@ iostream
 -
 sstream
 -
+ctime
+-
+iomanip
+-
 Board.h
 /cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/Board.h
 

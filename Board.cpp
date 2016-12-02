@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <sstream>
+#include <ctime>
+#include <iomanip>
 
 #include "Board.h"
 
@@ -11,6 +13,12 @@
  * Default constructor for Board
  */
 Board::Board() {
+
+    //create the seed for our random number generation later in the program
+    int  r;
+    srand(time(0));
+    r = rand();
+
     initialize();
 }
 
@@ -33,10 +41,9 @@ void Board::initialize() {
 
 void Board::generate() {
     bool success;
-    success = createBoard(); //attempt to make a board
-    while(!success){
-        success = createBoard(); //keep attempting till we are successful
-    }
+    do{
+        success = createBoard(); //attempt to make a board
+    }while(!success); //keep attempting till we are successful
 }
 
 bool Board::createBoard() {
@@ -47,11 +54,13 @@ bool Board::createBoard() {
     for (int i = 0; i < SQUARE_SIZE; i++) {
         for (int j = 0; j < SQUARE_SIZE; j++) {
 
-            success = createSquare(squareBoard[j][i], j, i); //attempt to create a board todo: don't redo the whole board, just redo one to two squares, wiping them and restarting from them.
+            success = createSquare(squareBoard[j][i], j, i); //attempt to create a board
 
             if(!success) return false; //if we ever fail to create a square we need to start again.
         }
     }
+
+    return true; //if we made it here we successfully made a board
 }
 
 /*
@@ -93,22 +102,7 @@ bool Board::createSquare(Square& square, int x, int y) {
                 } while (fullBoard[relativeX][relativeY] == -1);
 
             }else{  //in this case our has is composed entirely of true, which means we cannot insert. we need to rerun
-                //the program.
-                cout << print();
-
-                if(relativeX > farthestX){
-                    farthestX = relativeX;
-                    cout << "X: " << relativeX << " ";
-                    cout << endl << "farthest we've gotten: ( " << farthestX << ", " << farthestY << " )";
-                    cout << endl;
-                }
-                if(relativeY > farthestY){
-                    farthestY = relativeY;
-                    cout << "Y: " << relativeY << " ";
-                    cout << endl << "farthest we've gotten: ( " << farthestX << ", " << farthestY << " )";
-                    cout << endl;
-
-                }
+                    //the program.
 
                 return false;
 
@@ -120,7 +114,6 @@ bool Board::createSquare(Square& square, int x, int y) {
         }
     }
 
-    //cout << print() << endl;
     return true; //we made it all the way to the end, return that we successfully made a square
 
 }

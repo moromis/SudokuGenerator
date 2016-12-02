@@ -11,11 +11,11 @@ int main(){
 
     Board board;
 
-    cout << board.print();
+    cout << board;
 
     board.generate();
 
-    cout << board.print();
+    cout << board;
 
     return 0;
 }
