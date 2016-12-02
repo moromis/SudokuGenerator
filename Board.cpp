@@ -6,6 +6,7 @@
 #include <sstream>
 #include <ctime>
 #include <iomanip>
+#include <fstream>
 
 #include "Board.h"
 
@@ -17,7 +18,7 @@ Board::Board() {
     //create the seed for our random number generation later in the program
     int  r;
     srand(time(0));
-    r = rand();
+    r = rand(); //throw away the first value for truly random results (rand() with time(0) as a seed diverges quickly)
 
     initialize();
 }
@@ -26,7 +27,7 @@ void Board::initialize() {
 
     for (int i = 0; i < SIDE_SIZE; i++) {
         for (int j = 0; j < SIDE_SIZE; j++) {
-            fullBoard[j][i] = -1;
+            solvedBoard[j][i] = -1;
         }
     }
 
@@ -42,11 +43,15 @@ void Board::initialize() {
 void Board::generate() {
     bool success;
     do{
-        success = createBoard(); //attempt to make a board
+        success = createSolvedBoard(); //attempt to make a board
     }while(!success); //keep attempting till we are successful
+
+    createUnsolvedBoard(); //one we have a solved board we "unsolve" it by removing a fraction of the numbers.
+
+    outputToFile();
 }
 
-bool Board::createBoard() {
+bool Board::createSolvedBoard() {
 
     initialize(); //reset the board to default values
 
@@ -67,8 +72,6 @@ bool Board::createBoard() {
  * O(n^2)
  */
 bool Board::createSquare(Square& square, int x, int y) {
-
-    //WRONG i = x, j = y WRONG WRONG WRONG
 
     //j = x, i = y
     for (int i = 0; i < SQUARE_SIZE; i++) {
@@ -97,18 +100,18 @@ bool Board::createSquare(Square& square, int x, int y) {
                 do { //now based on hash decide randomly what number should go in this spot
                     int random = (rand() % 9);
                     if (!hash[random]) { //if it's valid to insert
-                        fullBoard[relativeX][relativeY] = random;
+                        solvedBoard[relativeX][relativeY] = random;
                     }
-                } while (fullBoard[relativeX][relativeY] == -1);
+                } while (solvedBoard[relativeX][relativeY] == -1);
 
             }else{  //in this case our has is composed entirely of true, which means we cannot insert. we need to rerun
-                    //the program.
+                //the program.
 
                 return false;
 
             }
 
-            square.insertNumber(fullBoard[relativeX][relativeY], j, i);
+            square.insertNumber(solvedBoard[relativeX][relativeY], j, i);
 
 
         }
@@ -120,13 +123,24 @@ bool Board::createSquare(Square& square, int x, int y) {
 
 void Board::checkColumn(int column, bool hash[9]) {
     for (int i = 0; i < SIDE_SIZE; i++) {
-        hash[fullBoard[column][i]] = true;
+        hash[solvedBoard[column][i]] = true;
     }
 }
 
 void Board::checkRow(int row, bool hash[9]) {
     for (int i = 0; i < SIDE_SIZE; i++) {
-        hash[fullBoard[i][row]] = true;
+        hash[solvedBoard[i][row]] = true;
+    }
+}
+
+void Board::createUnsolvedBoard(){
+
+    for(int i = 0; i < SIDE_SIZE; i++){
+        for(int j = 0; j < SIDE_SIZE; j++){
+            int random = rand() % 3;
+            if(random == 1 || random == 2) unsolvedBoard[j][i] = -1;
+            else unsolvedBoard[j][i] = solvedBoard[j][i];
+        }
     }
 }
 
@@ -147,25 +161,56 @@ void Board::checkRow(int row, bool hash[9]) {
  *
  * O(n^2)
  */
-string Board::print() {
+string Board::printSolvedBoard() {
 
     stringstream ss;
 
-    ss << " -----------------------------------\n";
+    ss << " -----------------------------------\r" << endl;
 
     for (int i = 0; i < SIDE_SIZE; i++) {
 
         ss << "|  ";
         for (int j = 0; j < SIDE_SIZE; j++) {
 
-            ss << (fullBoard [j] [i] + 1) << "  ";
+            ss << (solvedBoard [j] [i] + 1) << "  ";
 
             if ((j+1) % 3 == 0) ss << "|  ";
 
         }
 
-        ss << "\n";
-        if((i+1) % 3 == 0) ss << " -----------------------------------\n";
+        ss << "\r" << endl;
+        ss << "|                                   |\r" << endl;
+        if((i+1) % 3 == 0) ss << " -----------------------------------\r" << endl;
+
+    }
+
+    return ss.str();
+}
+
+string Board::printUnsolvedBoard() {
+
+    stringstream ss;
+
+    ss << " -----------------------------------\r" << endl;
+
+    for (int i = 0; i < SIDE_SIZE; i++) {
+
+        ss << "|  ";
+        for (int j = 0; j < SIDE_SIZE; j++) {
+
+            if(unsolvedBoard[j][i] == -1){
+                ss << "   ";
+            }else {
+                ss << (unsolvedBoard[j][i] + 1) << "  ";
+            }
+
+            if ((j+1) % 3 == 0) ss << "|  ";
+
+        }
+
+        ss << "\r" << endl;
+        ss << "|                                   |\r" << endl;
+        if((i+1) % 3 == 0) ss << " -----------------------------------\r" << endl;
 
     }
 
@@ -176,6 +221,17 @@ string Board::print() {
  * overload of operator<<
  */
 ostream& operator<<(ostream& stream, Board& sudoku) {
-    stream << sudoku.print();
+    stream << sudoku.printSolvedBoard() << endl << endl << sudoku.printUnsolvedBoard();
     return stream;
+}
+
+void Board::outputToFile() {
+    ofstream stream;
+    stream.open(to_string(time(0)) + ".txt");
+    if(stream.is_open()) {
+        stream << printUnsolvedBoard();
+        for(int i = 0; i < 6; i++) stream << "\r" << endl;
+        stream << printSolvedBoard();
+    }
+    stream.close();
 }

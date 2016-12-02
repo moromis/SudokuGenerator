@@ -11,8 +11,6 @@ int main(){
 
     Board board;
 
-    cout << board;
-
     board.generate();
 
     cout << board;
