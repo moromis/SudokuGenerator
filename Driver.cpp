@@ -3,14 +3,19 @@
 //
 
 #include <iostream>
-#include "Board.cpp"
+#include "Board.h"
 
 using namespace std;
 
 int main(){
 
     Board board;
-    board.createBoard;
 
-    board.print();
+    cout << board.print();
+
+    board.generate();
+
+    cout << board.print();
+
+    return 0;
 }

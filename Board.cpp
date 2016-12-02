@@ -4,35 +4,52 @@
 
 #include <iostream>
 #include <sstream>
-#include <math>
 
 #include "Board.h"
-#include "Square.cpp"
 
 /*
  * Default constructor for Board
  */
 Board::Board() {
+    initialize();
+}
 
-    for (int i = 0; i < SIDE_SIZE; ++i) {
-        for (int j = 0; j < SIDE_SIZE; ++j) {
-            fullBoard[i][j] = -1;
+void Board::initialize() {
+
+    for (int i = 0; i < SIDE_SIZE; i++) {
+        for (int j = 0; j < SIDE_SIZE; j++) {
+            fullBoard[j][i] = -1;
         }
     }
 
-    for (int i = 0; i < SQUARE_SIZE; ++i) {
-        for (int j = 0; j < SQUARE_SIZE; ++j) {
-            Square square(i, j);
-            squareBoard[i][j] = square;
+    for (int i = 0; i < SQUARE_SIZE; i++) {
+        for (int j = 0; j < SQUARE_SIZE; j++) {
+            Square square(j, i);
+            squareBoard[j][i] = square;
         }
     }
 
 }
 
-void Board::createBoard() {
-    for (int i = 0; i < SQUARE_SIZE; ++i) {
-        for (int j = 0; j < SQUARE_SIZE; ++j) {
-            createSquare(squareBoard[i][j], i, j);
+void Board::generate() {
+    bool success;
+    success = createBoard(); //attempt to make a board
+    while(!success){
+        success = createBoard(); //keep attempting till we are successful
+    }
+}
+
+bool Board::createBoard() {
+
+    initialize(); //reset the board to default values
+
+    bool success;
+    for (int i = 0; i < SQUARE_SIZE; i++) {
+        for (int j = 0; j < SQUARE_SIZE; j++) {
+
+            success = createSquare(squareBoard[j][i], j, i); //attempt to create a board todo: don't redo the whole board, just redo one to two squares, wiping them and restarting from them.
+
+            if(!success) return false; //if we ever fail to create a square we need to start again.
         }
     }
 }
@@ -42,43 +59,80 @@ void Board::createBoard() {
  */
 bool Board::createSquare(Square& square, int x, int y) {
 
-    bool* hash = new bool[9];
+    //WRONG i = x, j = y WRONG WRONG WRONG
 
-    //i = x, j = y
-    for (int i = 0; i < SQUARE_SIZE; ++i) {
-        for (int j = 0; j < SQUARE_SIZE; ++j) {
+    //j = x, i = y
+    for (int i = 0; i < SQUARE_SIZE; i++) {
+        for (int j = 0; j < SQUARE_SIZE; j++) {
+
+            int relativeX = square.getX() * SQUARE_SIZE + j;
+            int relativeY = square.getY() * SQUARE_SIZE + i;
+
+            bool hash[9] = {false, false, false, false, false, false,false, false, false};
 
             //check square
             square.checkSquare(hash);
             //check column
-            checkColumn(square.getX() * SQUARE_SIZE + i, hash);
+            checkColumn(relativeX, hash);
             //check row
-            checkRow(square.getY() * SQUARE_SIZE + i, hash);
+            checkRow(relativeY, hash);
 
-            //now based on hash decide randomly what number should go in this spot
-            do{
-                int random = (rand() % 9);
-                if(!hash[random]) { //if it's valid to insert
-                    fullBoard[i][j] = random;
+            bool canInsert = false; //start with the idea that we cannot in fact insert
+            for (int k = 0; k < SIDE_SIZE; k++) {
+                if(!hash[k]) canInsert = true; //if we find a false in our hash, we can insert
+            }
+
+            //if we have found that we are still able to insert
+            if(canInsert) {
+
+                do { //now based on hash decide randomly what number should go in this spot
+                    int random = (rand() % 9);
+                    if (!hash[random]) { //if it's valid to insert
+                        fullBoard[relativeX][relativeY] = random;
+                    }
+                } while (fullBoard[relativeX][relativeY] == -1);
+
+            }else{  //in this case our has is composed entirely of true, which means we cannot insert. we need to rerun
+                //the program.
+                cout << print();
+
+                if(relativeX > farthestX){
+                    farthestX = relativeX;
+                    cout << "X: " << relativeX << " ";
+                    cout << endl << "farthest we've gotten: ( " << farthestX << ", " << farthestY << " )";
+                    cout << endl;
                 }
-            }while(fullBoard[i][j] == -1);
+                if(relativeY > farthestY){
+                    farthestY = relativeY;
+                    cout << "Y: " << relativeY << " ";
+                    cout << endl << "farthest we've gotten: ( " << farthestX << ", " << farthestY << " )";
+                    cout << endl;
 
-            square.insertNumber(fullBoard[i][j]);
+                }
+
+                return false;
+
+            }
+
+            square.insertNumber(fullBoard[relativeX][relativeY], j, i);
+
 
         }
     }
 
-    delete[] hash;
+    //cout << print() << endl;
+    return true; //we made it all the way to the end, return that we successfully made a square
+
 }
 
-void Board::checkColumn(int column, bool*& hash) {
-    for (int i = 0; i < SIDE_SIZE; ++i) {
+void Board::checkColumn(int column, bool hash[9]) {
+    for (int i = 0; i < SIDE_SIZE; i++) {
         hash[fullBoard[column][i]] = true;
     }
 }
 
-void Board::checkRow(int row, bool*& hash) {
-    for (int i = 0; i < SIDE_SIZE; ++i) {
+void Board::checkRow(int row, bool hash[9]) {
+    for (int i = 0; i < SIDE_SIZE; i++) {
         hash[fullBoard[i][row]] = true;
     }
 }
@@ -86,7 +140,19 @@ void Board::checkRow(int row, bool*& hash) {
 /*
  * Print out the board
  *
- *  O(n^2)
+ *      j ---------------->
+ *
+ *  i
+ *  |     0,0  .  .  .  8,0
+ *  |
+ *  |      .             .
+ *  |      .  [.  .  .]  .
+ *  |      .             .
+ *  |
+ *  v     8,0  .  .  .  8,8
+ *
+ *
+ * O(n^2)
  */
 string Board::print() {
 
@@ -94,12 +160,12 @@ string Board::print() {
 
     ss << " -----------------------------------\n";
 
-    for (int i = 0; i < SIDE_SIZE; ++i) {
+    for (int i = 0; i < SIDE_SIZE; i++) {
 
         ss << "|  ";
-        for (int j = 0; j < SIDE_SIZE; ++j) {
+        for (int j = 0; j < SIDE_SIZE; j++) {
 
-            ss << abs(fullBoard [i] [j]) << "  ";
+            ss << (fullBoard [j] [i] + 1) << "  ";
 
             if ((j+1) % 3 == 0) ss << "|  ";
 

@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SudokuGenerator">
-				<Option output="/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/cmake-build-debug/SudokuGenerator.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/cmake-build-debug"/>
+				<Option output="/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/SudokuGenerator.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -52,15 +52,15 @@
 					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 SudokuGenerator"/>
-					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 SudokuGenerator"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SudokuGenerator/fast">
-				<Option output="/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/cmake-build-debug/SudokuGenerator.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/cmake-build-debug"/>
+				<Option output="/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/SudokuGenerator.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -73,29 +73,29 @@
 					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 SudokuGenerator/fast"/>
-					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/CSS\ 342/SudokuGenerator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 SudokuGenerator/fast"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/Board.cpp">
+		<Unit filename="/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/Board.cpp">
 			<Option target="SudokuGenerator"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/Board.h">
+		<Unit filename="/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/Board.h">
 			<Option target="SudokuGenerator"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/Driver.cpp">
+		<Unit filename="/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/Driver.cpp">
 			<Option target="SudokuGenerator"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/Square.cpp">
+		<Unit filename="/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/Square.cpp">
 			<Option target="SudokuGenerator"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/Square.h">
+		<Unit filename="/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/Square.h">
 			<Option target="SudokuGenerator"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/Kevin/Dropbox/School/CSS 342/SudokuGenerator/CMakeLists.txt">
+		<Unit filename="/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

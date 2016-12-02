@@ -2,21 +2,22 @@
 // Created by Kevin on 11/30/2016.
 //
 
-#ifndef SUDOKUGENERATOR_SQUARE_H
-#define SUDOKUGENERATOR_SQUARE_H
+#ifndef SQUARE_H
+#define SQUARE_H
 
 class Square{
 
 public:
 
+    Square();
     Square(int _x, int _y);
 
-    void checkSquare(bool*& h);
+    void checkSquare(bool h[9]);
 
     int getX();
     int getY();
 
-    void insertNumber(int i);
+    void insertNumber(int i, int _x, int _y);
 
 private:
 
@@ -27,8 +28,8 @@ private:
 
     int square [SQUARE_SIZE] [SQUARE_SIZE] = { {-1, -1, -1}, {-1, -1, -1}, {-1, -1, -1} }; //2d array to represent a square on the board, 3x3
 
-    bool hash [SQUARE_SIZE * SQUARE_SIZE];
+    bool hash [SQUARE_SIZE * SQUARE_SIZE] = {false, false, false, false, false, false,false, false, false};
 
 };
 
-#endif //SUDOKUGENERATOR_SQUARE_H
+#endif //SQUARE_H
