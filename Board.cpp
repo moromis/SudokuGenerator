@@ -133,13 +133,28 @@ void Board::checkRow(int row, bool hash[9]) {
     }
 }
 
+
+
 void Board::createUnsolvedBoard(){
 
-    for(int i = 0; i < SIDE_SIZE; i++){
-        for(int j = 0; j < SIDE_SIZE; j++){
+    int removes = 0;
+
+    for (int i = 0; i < SIDE_SIZE; i++) {
+        for (int j = 0; j < SIDE_SIZE; j++) {
+
             int random = rand() % 3;
-            if(random == 1 || random == 2) unsolvedBoard[j][i] = -1;
-            else unsolvedBoard[j][i] = solvedBoard[j][i];
+            if(removes < 2) {
+                if (random == 1 || random == 2) {
+                    unsolvedBoard[j][i] = -1;
+                    removes++;
+                } else {
+                    unsolvedBoard[j][i] = solvedBoard[j][i];
+                }
+            }else{
+                unsolvedBoard[j][i] = solvedBoard[j][i];
+                removes = 0;
+            }
+
         }
     }
 }
@@ -165,22 +180,31 @@ string Board::printSolvedBoard() {
 
     stringstream ss;
 
-    ss << " -----------------------------------\r" << endl;
+    ss << "[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]]\r" << endl;
+    ss << "[]                       []                       []                       []\r" << endl;
 
     for (int i = 0; i < SIDE_SIZE; i++) {
 
-        ss << "|  ";
+        ss << "[]   ---    ---    ---   []   ---    ---    ---   []   ---    ---    ---   []\r" << endl;
+
+        ss << "[]  ";
         for (int j = 0; j < SIDE_SIZE; j++) {
 
-            ss << (solvedBoard [j] [i] + 1) << "  ";
+            ss << "| " <<  (solvedBoard [j] [i] + 1) << " |  ";
 
-            if ((j+1) % 3 == 0) ss << "|  ";
+            if ((j+1) % 3 == 0) ss << "[]  ";
 
         }
 
         ss << "\r" << endl;
-        ss << "|                                   |\r" << endl;
-        if((i+1) % 3 == 0) ss << " -----------------------------------\r" << endl;
+        ss << "[]   ---    ---    ---   []   ---    ---    ---   []   ---    ---    ---   []\r" << endl;
+        ss << "[]                       []                       []                       []\r" << endl;
+        if(i == 2 || i == 5){
+            ss << "[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]]\r" << endl;
+            ss << "[]                       []                       []                       []\r" << endl;
+        }else if(i == 8){
+            ss << "[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]]\r" << endl;
+        }
 
     }
 
@@ -191,26 +215,34 @@ string Board::printUnsolvedBoard() {
 
     stringstream ss;
 
-    ss << " -----------------------------------\r" << endl;
+    ss << "[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]]\r" << endl;
+    ss << "[]                       []                       []                       []\r" << endl;
 
     for (int i = 0; i < SIDE_SIZE; i++) {
 
-        ss << "|  ";
-        for (int j = 0; j < SIDE_SIZE; j++) {
+        ss << "[]   ---    ---    ---   []   ---    ---    ---   []   ---    ---    ---   []\r" << endl;
 
-            if(unsolvedBoard[j][i] == -1){
-                ss << "   ";
-            }else {
-                ss << (unsolvedBoard[j][i] + 1) << "  ";
+        ss << "[]  ";
+        for (int j = 0; j < SIDE_SIZE; j++) {
+            if (unsolvedBoard[j][i] == -1) {
+                ss << "|   |  ";
+            } else{
+                ss << "| " << (unsolvedBoard[j][i] + 1) << " |  ";
             }
 
-            if ((j+1) % 3 == 0) ss << "|  ";
+            if ((j+1) % 3 == 0) ss << "[]  ";
 
         }
 
         ss << "\r" << endl;
-        ss << "|                                   |\r" << endl;
-        if((i+1) % 3 == 0) ss << " -----------------------------------\r" << endl;
+        ss << "[]   ---    ---    ---   []   ---    ---    ---   []   ---    ---    ---   []\r" << endl;
+        ss << "[]                       []                       []                       []\r" << endl;
+        if(i == 2 || i == 5){
+            ss << "[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]]\r" << endl;
+            ss << "[]                       []                       []                       []\r" << endl;
+        }else if(i == 8){
+            ss << "[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]]\r" << endl;
+        }
 
     }
 
@@ -227,10 +259,15 @@ ostream& operator<<(ostream& stream, Board& sudoku) {
 
 void Board::outputToFile() {
     ofstream stream;
-    stream.open(to_string(time(0)) + ".txt");
+
+    string s = __TIMESTAMP__;
+    s += " Sudoku.txt";
+    stream.open(s);
+
     if(stream.is_open()) {
+        for(int i = 0; i < 10; i++) stream << "\r" << endl;
         stream << printUnsolvedBoard();
-        for(int i = 0; i < 6; i++) stream << "\r" << endl;
+        for(int i = 0; i < 10; i++) stream << "\r" << endl;
         stream << printSolvedBoard();
     }
     stream.close();
