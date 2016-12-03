@@ -1,5 +1,5 @@
 # SudokuGenerator
 
-A program intended to generate a sudoku board, with expected functionality to printSolvedBoard a solvable board and a solution.
+Produces a formatted printable .txt file.
 
 Currently limited to 9x9.
