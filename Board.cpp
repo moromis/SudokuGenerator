@@ -137,26 +137,33 @@ void Board::checkRow(int row, bool hash[9]) {
 
 void Board::createUnsolvedBoard(){
 
-    int removes = 0;
+    bool success;
 
-    for (int i = 0; i < SIDE_SIZE; i++) {
-        for (int j = 0; j < SIDE_SIZE; j++) {
+    do {
+        success = true;
+        int count[9] = {0,0,0,0,0,0,0,0,0};
+        for (int i = 0; i < SIDE_SIZE; i++) {
+            for (int j = 0; j < SIDE_SIZE; j++) {
 
-            int random = rand() % 3;
-            if(removes < 2) {
+                int random = rand() % 3;
                 if (random == 1 || random == 2) {
                     unsolvedBoard[j][i] = -1;
-                    removes++;
                 } else {
                     unsolvedBoard[j][i] = solvedBoard[j][i];
                 }
-            }else{
-                unsolvedBoard[j][i] = solvedBoard[j][i];
-                removes = 0;
             }
-
         }
-    }
+
+        for(int i = 0; i < SIDE_SIZE; i++){
+            for(int j = 0; j < SIDE_SIZE; j++){
+                count[unsolvedBoard[j][i]]++;
+            }
+        }
+
+        for(int i = 0; i < SIDE_SIZE; i++){
+            if(count[i] < 4) success = false;
+        }
+    }while(!success);
 }
 
 /*
@@ -267,7 +274,7 @@ void Board::outputToFile() {
     if(stream.is_open()) {
         for(int i = 0; i < 10; i++) stream << "\r" << endl;
         stream << printUnsolvedBoard();
-        for(int i = 0; i < 10; i++) stream << "\r" << endl;
+        for(int i = 0; i < 20; i++) stream << "\r" << endl;
         stream << printSolvedBoard();
     }
     stream.close();

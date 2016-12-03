@@ -3,7 +3,7 @@
 
 # Relative path conversion top directories.
 set(CMAKE_RELATIVE_PATH_TOP_SOURCE "/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3")
-set(CMAKE_RELATIVE_PATH_TOP_BINARY "/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/cmake-build-debug")
+set(CMAKE_RELATIVE_PATH_TOP_BINARY "/cygdrive/c/Users/Kevin/Dropbox/School/SudokuGeneratorV3/bin")
 
 # Force unix paths in dependencies.
 set(CMAKE_FORCE_UNIX_PATHS 1)
