@@ -1,4 +1,4 @@
-# SudokuGenerator
+# Sudoku Generator
 
 Produces a formatted printable .txt file containing a sudoku puzzle.
 
